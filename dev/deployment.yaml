@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: whoami
 spec:
   selector:
     matchLabels:
-      app: myapp
+      app: whoami
   replicas: 1
   template:
     metadata:
       labels:
-        app: myapp
+        app: whoami
     spec:
       containers:
         - name: whoami
