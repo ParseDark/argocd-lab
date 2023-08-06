@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: mage-instance-svc
 spec:
-  type: LoadBalancer
   ports:
     - name: mage-web
       port: 6789
