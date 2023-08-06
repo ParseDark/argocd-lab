@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: mage-instance
 spec:
+  type: LoadBalancer
   ports:
     - name: mage-web
       port: 6789
-      targetPort: mage-web
+      targetPort: 6789
 
   selector:
     app: mage-instance
