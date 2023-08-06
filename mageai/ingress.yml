@@ -6,7 +6,8 @@ spec:
   rules:
   - http:
       paths:
-      - path: /mage
+      # only the "/" can success forward?????!!!
+      - path: /
         pathType: Prefix
         backend:
           service:
