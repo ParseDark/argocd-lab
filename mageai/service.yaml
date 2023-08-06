@@ -6,7 +6,7 @@ spec:
   type: LoadBalancer
   ports:
     - name: mage-web
-      port: 6789
+      port: 80
       targetPort: 6789
 
   selector:
