@@ -10,6 +10,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: mage-instance
+            name: mage-instance-svc
             port:
               name: mage-web

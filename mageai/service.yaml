@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mage-instance
+  name: mage-instance-svc
 spec:
   type: LoadBalancer
   ports:
     - name: mage-web
-      port: 80
-      targetPort: 6789
+      port: 6789
+      targetPort: mage-web
 
   selector:
     app: mage-instance
