@@ -4,9 +4,9 @@ metadata:
   name: mage-instance
 spec:
   ports:
-    - name: web
+    - name: mage-web
       port: 6789
-      targetPort: web
+      targetPort: mage-web
 
   selector:
     app: mage-instance
