@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mage-instance
+spec:
+  selector:
+    matchLabels:
+      app: mage-instance
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mage-instance
+    spec:
+      containers:
+        - name: mage-instance
+          image: mageai/mageai:latest
+          ports:
+            - name: web
+              containerPort: 6789
+          volumeMounts:
+          - name: mage-fs
+            mountPath: /home/src
+      volumes:
+      - name: mage-fs
+        hostPath:
+          path: /path/to/mage_project
+      serviceAccountName: mage-user
