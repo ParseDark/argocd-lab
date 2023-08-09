@@ -1,3 +1,21 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: http-redirect-ingressroute
+  namespace: jupyterlab-ingress
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: PathPrefix(`/jplab`)
+      kind: Rule
+      services:
+        - name: jupyterlab
+          port: jupyterlab-web
+      middlewares:
+        - name: jplab-stripprefix
+
 apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
@@ -6,23 +24,3 @@ spec:
   stripPrefix:
     prefixes:
       - /jplab
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: jupyterlab-ingress
-spec:
-  rules:
-  - http:
-      paths:
-      # only the "/" can success forward?????!!!
-      - path: /jplab
-        pathType: Prefix
-        backend:
-          service:
-            name: jupyterlab
-            port:
-              name: jupyterlab-web
-            middlewares:
-              - name: jplab-stripprefix
-
