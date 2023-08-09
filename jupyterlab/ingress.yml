@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jupyterlab-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      # only the "/" can success forward?????!!!
+      - path: /jplab
+        pathType: Prefix
+        backend:
+          service:
+            name: jupyterlab
+            port:
+              name: jupyterlab-web
