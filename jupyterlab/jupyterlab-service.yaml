@@ -9,7 +9,7 @@ spec:
   type: LoadBalancer
   ports:
     - name: jupyterlab-web
-      port: 80
+      port: 8888
       targetPort: 8888
   selector:
     name: jupyterlab

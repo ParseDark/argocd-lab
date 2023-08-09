@@ -4,9 +4,5 @@ metadata:
   name: jupyterlab-pvc
   namespace: jlab
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-  storageClassName: standard-gp2-retain
+  accessModes: [ReadWriteOnce]
+  resources: { requests: { storage: 10Gi } }
