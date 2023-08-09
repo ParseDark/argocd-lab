@@ -14,3 +14,15 @@ spec:
             name: jupyterlab
             port:
               name: jupyterlab-web
+            middlewares:
+              - name: jplab-stripprefix
+
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: jplab-stripprefix
+spec:
+  stripPrefix:
+    prefixes:
+      - /jplab
