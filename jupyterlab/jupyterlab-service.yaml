@@ -5,7 +5,6 @@ metadata:
   labels:
     name: jupyterlab
 spec:
-  type: LoadBalancer
   ports:
     - name: jupyterlab-web
       port: 8888
