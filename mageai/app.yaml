@@ -40,7 +40,7 @@ metadata:
 spec:
   containers:
   - name: mage-server
-    image: mageai/mageai:latest
+    image: mageai/mageai:0.9.9
     ports:
     - name: mage-web
       port: 6789
