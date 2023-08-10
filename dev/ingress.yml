@@ -5,7 +5,7 @@ metadata:
   namespace: default
   annotations:
     kubernetes.io/ingress.class: public
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /lab
 spec:
   rules:
   - http:
