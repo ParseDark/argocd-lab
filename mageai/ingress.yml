@@ -7,10 +7,10 @@ spec:
   - http:
       paths:
       # only the "/" can success forward?????!!!
-      - path: /
+      - path: /mage
         pathType: Prefix
         backend:
           service:
-            name: mage-instance-svc
+            name:  mage-server
             port:
               name: mage-web
