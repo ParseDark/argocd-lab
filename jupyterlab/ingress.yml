@@ -10,10 +10,10 @@ spec:
   rules:
   - http:
       paths:
-      - path: /jplab
+      - path: /nb
         pathType: Prefix
         backend:
           service:
             name: jupyterlab
             port:
-              name: jupyterlab-web
+              number: 8888

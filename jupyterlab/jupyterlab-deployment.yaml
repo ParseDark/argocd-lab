@@ -27,7 +27,7 @@ spec:
             - /bin/bash
             - -c
             - |
-              start.sh jupyter lab --LabApp.token='password' --LabApp.ip='0.0.0.0' --LabApp.allow_root=True
+              start.sh jupyter lab --NotebookApp.base_url='/nb' --LabApp.token='hawei' --LabApp.ip='0.0.0.0' --LabApp.allow_root=True
           volumeMounts:
             - name: jupyterlab-data
               mountPath: /home/jovyan
