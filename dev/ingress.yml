@@ -1,26 +1,19 @@
----
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: http-redirect-ingressroute
-  namespace: whoami-1-ingress
+  name: whoami-ingress
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: public
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  entryPoints:
-    - web
-  routes:
-    - match: PathPrefix(`/x`)
-      kind: Rule
-      services:
-        - name: whoami-1
-          port: web
-      middlewares:
-        - name: x-stripprefix
----
-apiVersion: traefik.io/v1alpha1
-kind: Middleware
-metadata:
-  name: x-stripprefix
-spec:
-  stripPrefix:
-    prefixes:
-      - /x
+  rules:
+  - http:
+      paths:
+      - path: /whoami
+        pathType: Prefix
+        backend:
+          service:
+            name: whoami-1
+            port:
+              number: 80
