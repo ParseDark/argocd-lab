@@ -9,7 +9,7 @@ metadata:
 data:
   NODE_ENV: "production"
   GENERIC_TIMEZONE: "China/Shanghai"
-  WEBHOOK_TUNNEL_URL: "https://your.domain.com/" # well come back to this later
+  WEBHOOK_TUNNEL_URL: "https://ng.gridv.site" # well come back to this later
   # Database configurations
   DB_TYPE: "postgresdb"
   DB_POSTGRESDB_USER: "n8n"
