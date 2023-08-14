@@ -7,32 +7,45 @@ metadata:
     ver: "0.0.1"
     env: staging
 spec:
-  containers:
-    - name: mongodb
-      image: mongo:4.1.13-bionic
-      ports:
-        - containerPort: 27017
-      args:
-        - "mongod"
-        - "--auth"
-        - "--bind_ip_all"
-      env:
-        - name: "MONGO_INITDB_ROOT_USERNAME"
-          valueFrom:
-            secretKeyRef:
-              name: mongo-secret
-              key: root_username
-        - name: "MONGO_INITDB_ROOT_PASSWORD"
-          valueFrom:
-            secretKeyRef:
-              name: mongo-secret
-              key: root_password
-        - name: "MONGO_INITDB_DATABASE"
-          value: "admin"
-      volumeMounts:
-        - mountPath: /data/db
-          name: mongo-storage
-  volumes:
-    - name: mongo-storage
-      persistentVolumeClaim:
-        claimName: mongo-pvc
+  replicas: 1
+  selector:
+    matchLabels:
+      name: mongodb
+  template:
+    metadata:
+      labels:
+        name: mongodb
+    spec:
+      containers:
+        - name: mongodb
+          image: mongo:4.1.13-bionic
+          ports:
+            - containerPort: 27017
+          args:
+            - "mongod"
+            - "--auth"
+            - "--bind_ip_all"
+          env:
+            - name: "MONGO_INITDB_ROOT_USERNAME"
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: root_username
+            - name: "MONGO_INITDB_ROOT_PASSWORD"
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-secret
+                  key: root_password
+            - name: "MONGO_INITDB_DATABASE"
+              value: "admin"
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongo-storage
+          resources:
+            requests:
+              memory: 500Mi
+              cpu: 250m
+      volumes:
+        - name: mongo-storage
+          persistentVolumeClaim:
+            claimName: mongo-pvc
