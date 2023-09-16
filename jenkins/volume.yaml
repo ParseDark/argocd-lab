@@ -23,14 +23,6 @@ spec:
     - ReadWriteOnce
   local:
     path: /mnt
-  nodeAffinity:
-    required:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: kubernetes.io/hostname
-          operator: In
-          values:
-          - worker-node01
 
 ---
 apiVersion: v1
