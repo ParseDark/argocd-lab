@@ -21,6 +21,11 @@ spec:
         - name: jupyterlab
           image: jupyter/datascience-notebook:latest
           imagePullPolicy: IfNotPresent
+          env:
+          - name: GRANT_SUDO
+            value: "yes"
+          - name: CHOWN_HOME
+            value: "yes"
           ports:
           - containerPort: 8888
           command:
