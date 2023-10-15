@@ -3,9 +3,6 @@ kind: Ingress
 metadata:
   name: n8n-service-ingress
   namespace: default
-  annotations:
-    kubernetes.io/ingress.class: public
-    nginx.ingress.kubernetes.io/app-root: /
 spec:
   ingressClassName: nginx
   rules:
