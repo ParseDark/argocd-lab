@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mage-instance-ingress
+spec:
+  rules:
+  - http:
+      paths:
+      # only the "/" can success forward?????!!!
+      - path: /mage
+        pathType: Prefix
+        backend:
+          service:
+            name:  mage-server
+            port:
+              name: mage-web
