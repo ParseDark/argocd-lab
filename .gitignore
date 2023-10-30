@@ -1,1 +1,3 @@
 bin/
+prometheus/data/*
+prometheus/example_metric_server/screenlog.0
